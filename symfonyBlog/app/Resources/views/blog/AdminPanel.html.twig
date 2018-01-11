@@ -2,6 +2,76 @@
 {% block title  %}
     Admin Panel
     {% endblock %}
+{% block stylesheet  %}
+    <style>
+    header
+{
+	font-family: 'Lobster', cursive;
+	text-align: center;
+	font-size: 25px;	
+}
+
+#info
+{
+	font-size: 18px;
+	color: #555;
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+a{
+	color: #074E8C;
+}
+
+.scrollbar
+{
+	margin-left: 30px;
+	float: left;
+	height: 300px;
+
+	
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+.force-overflow
+{
+	min-height: 450px;
+}
+
+#wrapper
+{
+	text-align: center;
+	
+	margin: auto;
+}
+#style-custom::-webkit-scrollbar-track
+{
+	
+}
+
+#style-custom::-webkit-scrollbar
+{
+	width: 6px;
+	
+}
+
+#style-custom::-webkit-scrollbar-thumb
+{
+background-color: #FFF;
+	background-image: -webkit-linear-gradient(90deg,
+	                                          rgba(0, 0, 0, 1) 0%,
+											  rgba(0, 0, 0, 1) 25%,
+											  transparent 100%,
+											  rgba(0, 0, 0, 1) 50%,
+											  transparent,
+											  rgba(0, 0, 0, 1) 25%,
+											  transparent 100%)
+
+}
+    </style>
+    {% endblock %}
+        
 {% block body  %}
 
           
@@ -33,7 +103,11 @@
                 <td>{{post.postDetails}}</td>
                 <td> {{  post.postedBy }}</td>
                
-                <td> {{  post.postData }}</td>
+                <td><div id="wrapper">
+    <div class="scrollbar" id="style-custom">
+      {{  post.postData }}</div>
+    </div>
+                    </td>
                 <td> <a href="/symfonyBlog/web/app_dev.php/admin/delete/deletepost/{{post.id}}" ><span class="btn btn-danger">&Chi;</span></a></td>
             </tr>
         {% endfor %}
